@@ -1,35 +1,37 @@
-' This is all a work in progress- use with caution
+###
+This is all a work in progress- use with caution - written for Microsoft Office 2007 and above.
+###
 
-Sub HighlightTargets2()
+	Sub HighlightTargets2()
 
-	Dim range As range
-	Dim i As Long
-	Dim TargetList
+		Dim range As range
+		Dim i As Long
+		Dim TargetList
 
-	' long list of poor resume words
-	TargetList = Array("Agreement", "Ignite", "terms")
+		' long list of poor resume words
+		TargetList = Array("Agreement", "Ignite", "terms")
 
-	For i = 0 To UBound(TargetList)
+		For i = 0 To UBound(TargetList)
 
-	' make the entire document the range
-	Set range = ActiveDocument.range
+		' make the entire document the range
+		Set range = ActiveDocument.range
 
-	With range.Find
-	.Text = TargetList(i)
-	.Format = True
-	.MatchCase = false
-	.MatchWholeWord = False
-	.MatchWildcards = False
-	.MatchSoundsLike = False
-	.MatchAllWordForms = False
+		With range.Find
+		.Text = TargetList(i)
+		.Format = True
+		.MatchCase = false
+		.MatchWholeWord = False
+		.MatchWildcards = False
+		.MatchSoundsLike = False
+		.MatchAllWordForms = False
 
-	Do While .Execute(Forward:=True) = True
-		Then MsgBox "Not Found"
-	range.HighlightColorIndex = wdYellow
+		Do While .Execute(Forward:=True) = True
+			Then MsgBox "Not Found"
+		range.HighlightColorIndex = wdYellow
 
-	Loop
+		Loop
 
-	End With
-	Next
+		End With
+		Next
 
-End Sub
+	End Sub
